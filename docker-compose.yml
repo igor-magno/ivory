@@ -1,0 +1,24 @@
+version: '3'
+services:
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: local_map_cloud
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'root'
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+
+  server:
+    build: .
+    environment:
+      MYSQL_HOST: "mysql"
+      MYSQL_PORT: "3306"
+      MYSQL_DB_NAME: "local_map_cloud"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "root"
+    ports:
+     - 80:80
+     
